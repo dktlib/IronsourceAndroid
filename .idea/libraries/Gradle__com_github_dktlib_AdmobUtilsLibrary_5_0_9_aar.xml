@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.dktlib:AdmobUtilsLibrary:5.0.9@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6576dcbd73148b6449a2910b5fa70a71/jetified-AdmobUtilsLibrary-5.0.9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6576dcbd73148b6449a2910b5fa70a71/jetified-AdmobUtilsLibrary-5.0.9/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6576dcbd73148b6449a2910b5fa70a71/jetified-AdmobUtilsLibrary-5.0.9/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.dktlib/AdmobUtilsLibrary/5.0.9/5bce6c6ccaab12b27b887ce6468e553f75b29ae0/AdmobUtilsLibrary-5.0.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
