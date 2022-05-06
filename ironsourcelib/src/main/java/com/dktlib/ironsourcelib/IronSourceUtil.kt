@@ -497,6 +497,117 @@ object IronSourceUtil : LifecycleObserver {
             }
         }
     }
+
+    @MainThread
+    fun loađAndShowInterstitialsWithDialogCheckTime(
+        activity: AppCompatActivity,
+        placementId: String,
+        dialogShowTime: Long,
+        timeInMillis: Long,
+        callback: InterstititialCallback
+    ) {
+        var dialog = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+        if(!IronSource.isInterstitialReady()){
+            IronSource.loadInterstitial()
+        }
+
+        //Throttle calling interstitial
+        if(System.currentTimeMillis() - 1000 < lastTimeCallInterstitial){
+            return
+        }
+        lastTimeCallInterstitial = System.currentTimeMillis()
+        if (!enableAds) {
+            callback.onInterstitialLoadFail()
+            return
+        }
+        if (!(System.currentTimeMillis() - timeInMillis > lastTimeInterstitialShowed) || (!enableAds)) {
+            callback.onInterstitialLoadFail()
+            return
+        }
+        IronSource.setInterstitialListener(object : InterstitialListener {
+            override fun onInterstitialAdReady() {
+//                activity.lifecycleScope.launch(Dispatchers.Main) {
+//                    isLoadInterstitialFailed = false
+//                    callback.onInterstitialReady()
+//                    IronSource.setInterstitialListener(emptyListener)
+//                }
+                if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
+                    dialog.dismiss()
+                }
+                IronSource.showInterstitial(placementId)
+            }
+
+            override fun onInterstitialAdLoadFailed(p0: IronSourceError?) {
+                activity.lifecycleScope.launch(Dispatchers.Main) {
+                    isLoadInterstitialFailed = true
+                    callback.onInterstitialLoadFail()
+                    IronSource.setInterstitialListener(emptyListener)
+                }
+            }
+
+            override fun onInterstitialAdOpened() {
+
+            }
+
+            override fun onInterstitialAdClosed() {
+                callback.onInterstitialClosed()
+                isInterstitialAdShowing = false
+                loadInterstitials()
+            }
+
+            override fun onInterstitialAdShowSucceeded() {
+                callback.onInterstitialShowSucceed()
+                lastTimeInterstitialShowed = System.currentTimeMillis()
+                isInterstitialAdShowing = true
+            }
+
+            override fun onInterstitialAdShowFailed(p0: IronSourceError?) {
+                callback.onInterstitialClosed()
+            }
+
+            override fun onInterstitialAdClicked() {
+
+            }
+        })
+
+        if (IronSource.isInterstitialReady()) {
+            activity.lifecycleScope.launch {
+                if (dialogShowTime > 0) {
+
+                    dialog.getProgressHelper().barColor = Color.parseColor("#A5DC86")
+                    dialog.setTitleText("Loading ads. Please wait...")
+                    dialog.setCancelable(false)
+                    activity.lifecycle.addObserver(DialogHelperActivityLifeCycle(dialog))
+                    if (!activity.isFinishing) {
+                        dialog.show()
+                    }
+                    delay(dialogShowTime)
+                    if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
+                        dialog.dismiss()
+                    }
+                }
+                if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+                    Log.d(TAG, "onInterstitialAdReady")
+                    IronSource.showInterstitial(placementId)
+                }
+            }
+        } else {
+            activity.lifecycleScope.launch(Dispatchers.Main) {
+//                isInterstitialAdShowing = false
+//                isLoadInterstitialFailed = true
+                var dialog = SweetAlertDialog(activity, SweetAlertDialog.PROGRESS_TYPE)
+                dialog.getProgressHelper().barColor = Color.parseColor("#A5DC86")
+                dialog.setTitleText("Loading ads. Please wait...")
+                dialog.setCancelable(false)
+                activity.lifecycle.addObserver(DialogHelperActivityLifeCycle(dialog))
+                if (!activity.isFinishing) {
+                    dialog.show()
+                }
+
+            }
+        }
+    }
+
     fun showInterstitialAdsWithCallbackCheckTime(
         activity: AppCompatActivity,
         adPlacementId: String,
@@ -631,9 +742,6 @@ object IronSourceUtil : LifecycleObserver {
         }
     }
 
-
-
-    //
     fun loadAndShowRewardsAds(placementId: String,callback: RewardVideoCallback){
         IronSource.setRewardedVideoListener(object : RewardedVideoListener {
             override fun onRewardedVideoAdOpened() {

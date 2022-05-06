@@ -19,25 +19,18 @@ class SplashActivity : AppCompatActivity() {
         IronSourceUtil.initIronSource(this, "85460dcd", true)
         IronSourceUtil.validateIntegration(this)
         this.application.registerActivityLifecycleCallbacks(IronSourceLifeCycleHelper)
-        binding.btnNext.setOnClickListener {
-            requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
-        IronSourceUtil.loadInterstitials(this,15000,object : InterstititialCallback {
+
+        IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,0,object : InterstititialCallback {
             override fun onInterstitialReady() {
-                binding.btnNext.visibility = View.VISIBLE
-                binding.progressBar.visibility = View.INVISIBLE
+
             }
 
-
-
             override fun onInterstitialClosed() {
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(i)
+                onInterstitialLoadFail()
             }
 
             override fun onInterstitialLoadFail() {
-                onInterstitialClosed()
+                startActivity(Intent(this@SplashActivity,MainActivity::class.java))
             }
 
             override fun onInterstitialShowSucceed() {
@@ -45,13 +38,40 @@ class SplashActivity : AppCompatActivity() {
             }
         })
 
+
+        binding.btnNext.setOnClickListener {
+            requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+//        IronSourceUtil.loadInterstitials(this,15000,object : InterstititialCallback {
+//            override fun onInterstitialReady() {
+//                binding.btnNext.visibility = View.VISIBLE
+//                binding.progressBar.visibility = View.INVISIBLE
+//            }
+//
+//
+//
+//            override fun onInterstitialClosed() {
+//                val i = Intent(this@SplashActivity, MainActivity::class.java)
+//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                startActivity(i)
+//            }
+//
+//            override fun onInterstitialLoadFail() {
+//                onInterstitialClosed()
+//            }
+//
+//            override fun onInterstitialShowSucceed() {
+//
+//            }
+//        })
+
     }
     val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                IronSourceUtil.showInterstitialsWithDialogCheckTime(this,"aplssh",1500,0,object : InterstititialCallback {
+                IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"aplssh",1500,0,object : InterstititialCallback {
                     override fun onInterstitialReady() {
 
                     }

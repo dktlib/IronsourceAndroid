@@ -19,12 +19,15 @@ class MainActivity : AppCompatActivity() {
         val btnLoad = findViewById<Button>(R.id.btn_load_inter)
         val btnShow = findViewById<Button>(R.id.btn_show_inter)
         val btnCallback2 = findViewById<Button>(R.id.btn_show_inter_callback2)
+        val btnLoadAndShow = findViewById<Button>(R.id.btn_load_show_inter_callback2)
+
+
         val btnReward = findViewById<Button>(R.id.btn_show_reward)
         bannerContainer = findViewById<FrameLayout>(R.id.banner_container)
         val bannerContainer = findViewById<FrameLayout>(R.id.banner_container)
 
-        IronSourceUtil.initIronSource(this, "85460dcd", false)
-        IronSourceUtil.validateIntegration(this)
+//        IronSourceUtil.initIronSource(this, "11726cd45", false)
+//        IronSourceUtil.validateIntegration(this)
         btnLoad.setOnClickListener {
 //            IronSourceUtil.showInterstitialAdsWithCallback(this@MainActivity,"main",true,object : AdCallback {
 //                override fun onAdClosed() {
@@ -38,6 +41,11 @@ class MainActivity : AppCompatActivity() {
             IronSourceUtil.loadInterstitials()
 
         }
+
+        btnLoadAndShow.setOnClickListener(){
+
+        }
+
         btnShow.setOnClickListener {
             IronSourceUtil.showInterstitialsWithDialog(
                 this,
@@ -103,6 +111,29 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+
+        btnLoadAndShow.setOnClickListener {
+            IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"loadandshow",1500,0,object : InterstititialCallback {
+                override fun onInterstitialReady() {
+
+                }
+
+                override fun onInterstitialClosed() {
+                    Toast.makeText(this@MainActivity,"onInterstitialClosed",1000).show()
+
+                }
+
+                override fun onInterstitialLoadFail() {
+                    Toast.makeText(this@MainActivity,"onInterstitialLoadFail",1000).show()
+
+                }
+
+                override fun onInterstitialShowSucceed() {
+
+                }
+            })
+        }
+
     }
 
     //    override fun onPause() {

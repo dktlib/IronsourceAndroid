@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/jetified-unityadsadapter-4.3.14/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/jetified-unityadsadapter-4.3.14/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/jetified-unityadsadapter-4.3.14/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/unityadsadapter-4.3.14/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/unityadsadapter-4.3.14/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8ecdc13c2154fd6ad808af54523b0ceb/unityadsadapter-4.3.14/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
