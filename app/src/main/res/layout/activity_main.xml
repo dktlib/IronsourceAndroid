@@ -14,20 +14,14 @@
         android:layout_centerHorizontal="true"
         android:text="load inter" />
 
+
     <Button
-        android:id="@+id/btn_show_inter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@id/btn_load_inter"
-        android:layout_centerInParent="true"
-        android:text="show inter" />
-    <Button
-        android:layout_below="@id/btn_show_inter"
         android:id="@+id/btn_show_inter_callback2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="show inter callback2 " />
+        android:text="show inter check time " />
 
     <Button
         android:id="@+id/btn_load_show_inter_callback2"

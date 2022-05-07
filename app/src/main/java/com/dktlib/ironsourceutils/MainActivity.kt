@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val btnLoad = findViewById<Button>(R.id.btn_load_inter)
-        val btnShow = findViewById<Button>(R.id.btn_show_inter)
         val btnCallback2 = findViewById<Button>(R.id.btn_show_inter_callback2)
         val btnLoadAndShow = findViewById<Button>(R.id.btn_load_show_inter_callback2)
         val nativeAds = findViewById<LinearLayout>(R.id.nativead)
@@ -46,34 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        btnShow.setOnClickListener {
-            IronSourceUtil.showInterstitialsWithDialog(
-                this,
-                "yo",
-                1500,
-                object : InterstititialCallback {
-                    override fun onInterstitialShowSucceed() {
-
-                    }
-
-                    override fun onInterstitialReady() {
-
-                    }
-
-                    override fun onInterstitialClosed() {
-                        startActivity(Intent(this@MainActivity, MainActivity2::class.java))
-                    }
-
-                    override fun onInterstitialLoadFail() {
-                        onInterstitialClosed()
-                    }
-                })
-        }
         btnCallback2.setOnClickListener {
-            IronSourceUtil.showInterstitialsWithDialog(
+            IronSourceUtil.showInterstitialsWithDialogCheckTime(
                 this,
                 "yo",
                 1500,
+                0,
                 object : InterstititialCallback {
                     override fun onInterstitialShowSucceed() {
 
@@ -119,12 +96,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onInterstitialClosed() {
-                    Toast.makeText(this@MainActivity,"onInterstitialClosed",1000).show()
+                    startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+
 
                 }
 
                 override fun onInterstitialLoadFail() {
-                    Toast.makeText(this@MainActivity,"onInterstitialLoadFail",1000).show()
+                    startActivity(Intent(this@MainActivity, MainActivity2::class.java))
+
 
                 }
 
