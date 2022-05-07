@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLoadAndShow.setOnClickListener {
-            IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"loadandshow",1500,50000,object : InterstititialCallback {
+            IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this,"loadandshow",1500,0,object : InterstititialCallback {
                 override fun onInterstitialReady() {
 
                 }

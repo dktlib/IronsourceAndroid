@@ -11,7 +11,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        AdmodUtils.getInstance().initAdmob(this, 10000, false, true)
+        AdmodUtils.getInstance().initAdmob(this, 10000, true, true)
             AppOpenManager.getInstance().init(application, getString(R.string.test_ads_admob_app_open))
             AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
 
@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         IronSourceUtil.validateIntegration(this)
         this.application.registerActivityLifecycleCallbacks(IronSourceLifeCycleHelper)
 
-        IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,50000,object : InterstititialCallback {
+        IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,0,object : InterstititialCallback {
             override fun onInterstitialReady() {
 
             }
@@ -72,7 +72,7 @@ class SplashActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"aplssh",1500,0,object : InterstititialCallback {
+                IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this,"aplssh",1500,0,object : InterstititialCallback {
                     override fun onInterstitialReady() {
 
                     }

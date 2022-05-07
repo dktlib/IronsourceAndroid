@@ -24,7 +24,9 @@ import com.ironsource.mediationsdk.sdk.InterstitialListener
 import com.ironsource.mediationsdk.sdk.RewardedVideoListener
 import com.vapp.admoblibrary.ads.AppOpenManager
 import com.vapp.admoblibrary.utils.SweetAlert.SweetAlertDialog
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 object IronSourceUtil : LifecycleObserver {
@@ -502,7 +504,7 @@ object IronSourceUtil : LifecycleObserver {
     }
 
     @MainThread
-    fun loađAndShowInterstitialsWithDialogCheckTime(
+    fun loadAndShowInterstitialsWithDialogCheckTime(
         activity: AppCompatActivity,
         placementId: String,
         dialogShowTime: Long,
@@ -537,6 +539,9 @@ object IronSourceUtil : LifecycleObserver {
             if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                 dialog.dismiss()
             }
+            if (AppOpenManager.getInstance().isInitialized) {
+                AppOpenManager.getInstance().isAppResumeEnabled = true
+            }
             callback.onInterstitialLoadFail()
             return
         }
@@ -544,16 +549,14 @@ object IronSourceUtil : LifecycleObserver {
             if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                 dialog.dismiss()
             }
+            if (AppOpenManager.getInstance().isInitialized) {
+                AppOpenManager.getInstance().isAppResumeEnabled = true
+            }
             callback.onInterstitialLoadFail()
             return
         }
         IronSource.setInterstitialListener(object : InterstitialListener {
             override fun onInterstitialAdReady() {
-//                activity.lifecycleScope.launch(Dispatchers.Main) {
-//                    isLoadInterstitialFailed = false
-//                    callback.onInterstitialReady()
-//                    IronSource.setInterstitialListener(emptyListener)
-//                }
                 if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                     dialog.dismiss()
                 }
@@ -566,6 +569,9 @@ object IronSourceUtil : LifecycleObserver {
                         dialog.dismiss()
                     }
                     isLoadInterstitialFailed = true
+                    if (AppOpenManager.getInstance().isInitialized) {
+                        AppOpenManager.getInstance().isAppResumeEnabled = true
+                    }
                     callback.onInterstitialLoadFail()
                     IronSource.setInterstitialListener(emptyListener)
                 }
@@ -578,6 +584,9 @@ object IronSourceUtil : LifecycleObserver {
             override fun onInterstitialAdClosed() {
                 if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                     dialog.dismiss()
+                }
+                if (AppOpenManager.getInstance().isInitialized) {
+                    AppOpenManager.getInstance().isAppResumeEnabled = true
                 }
                 callback.onInterstitialClosed()
                 isInterstitialAdShowing = false
@@ -595,6 +604,9 @@ object IronSourceUtil : LifecycleObserver {
             }
 
             override fun onInterstitialAdShowFailed(p0: IronSourceError?) {
+                if (AppOpenManager.getInstance().isInitialized) {
+                    AppOpenManager.getInstance().isAppResumeEnabled = true
+                }
                 callback.onInterstitialClosed()
                 if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                     dialog.dismiss()
