@@ -2,11 +2,10 @@ package com.dktlib.ironsourceutils
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dktlib.ironsourcelib.*
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         val btnShow = findViewById<Button>(R.id.btn_show_inter)
         val btnCallback2 = findViewById<Button>(R.id.btn_show_inter_callback2)
         val btnLoadAndShow = findViewById<Button>(R.id.btn_load_show_inter_callback2)
+        val nativeAds = findViewById<LinearLayout>(R.id.nativead)
 
 
         val btnReward = findViewById<Button>(R.id.btn_show_reward)
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLoadAndShow.setOnClickListener {
-            IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"loadandshow",1500,0,object : InterstititialCallback {
+            IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"loadandshow",1500,50000,object : InterstititialCallback {
                 override fun onInterstitialReady() {
 
                 }
@@ -133,6 +133,14 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+
+        AdmodUtils.getInstance().loadNativeAds(this@MainActivity,
+            getString(R.string.test_ads_admob_native_id), nativeAds,
+            GoogleENative.UNIFIED_MEDIUM, object : NativeAdCallback {
+           override fun onNativeAdLoaded() {}
+            override  fun onAdFail() {}
+        })
+
 
     }
 

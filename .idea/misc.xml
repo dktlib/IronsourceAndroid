@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/6576dcbd73148b6449a2910b5fa70a71/AdmobUtilsLibrary-5.0.9/res/layout/ad_unified_medium.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.37604166666666666" />
+        <entry key="ironsourcelib/src/main/res/layout/banner_shimmer_layout.xml" value="0.28229166666666666" />
+        <entry key="ironsourcelib/src/main/res/layout/data_placeholder_layout.xml" value="0.13697916666666668" />
+        <entry key="ironsourcelib/src/main/res/layout/data_placeholder_layout_medium.xml" value="0.13177083333333334" />
+        <entry key="ironsourcelib/src/main/res/layout/data_placeholder_layout_small.xml" value="0.13697916666666668" />
+        <entry key="ironsourcelib/src/main/res/layout/layoutnative_loading_medium.xml" value="0.26666666666666666" />
+        <entry key="ironsourcelib/src/main/res/layout/layoutnative_loading_small.xml" value="0.13697916666666668" />
       </map>
     </option>
   </component>

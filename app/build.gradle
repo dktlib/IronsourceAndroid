@@ -7,7 +7,7 @@ android {
     configurations.all {
         resolutionStrategy { force 'androidx.work:work-runtime:2.6.0' }
     }
-    compileSdk 30
+    compileSdk 31
     dataBinding {
         enabled = true
     }

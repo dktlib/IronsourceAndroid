@@ -2,25 +2,26 @@ package com.dktlib.ironsourceutils
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.dktlib.ironsourcelib.InterstititialCallback
-import com.dktlib.ironsourcelib.IronSourceLifeCycleHelper
-import com.dktlib.ironsourcelib.IronSourceUtil
+import com.dktlib.ironsourcelib.*
 import com.dktlib.ironsourceutils.databinding.ActivitySplashBinding
-import java.util.jar.Manifest
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        AdmodUtils.getInstance().initAdmob(this, 10000, false, true)
+            AppOpenManager.getInstance().init(application, getString(R.string.test_ads_admob_app_open))
+            AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
+
         val binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         IronSourceUtil.initIronSource(this, "85460dcd", true)
         IronSourceUtil.validateIntegration(this)
         this.application.registerActivityLifecycleCallbacks(IronSourceLifeCycleHelper)
 
-        IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,0,object : InterstititialCallback {
+        IronSourceUtil.loađAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,50000,object : InterstititialCallback {
             override fun onInterstitialReady() {
 
             }
