@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.lifecycleScope
+import com.dktlib.ironsourcelib.utils.SweetAlert.SweetAlertDialog
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.ironsource.mediationsdk.ISBannerSize
 import com.ironsource.mediationsdk.IronSource
@@ -22,8 +23,6 @@ import com.ironsource.mediationsdk.model.Placement
 import com.ironsource.mediationsdk.sdk.BannerListener
 import com.ironsource.mediationsdk.sdk.InterstitialListener
 import com.ironsource.mediationsdk.sdk.RewardedVideoListener
-import com.vapp.admoblibrary.ads.AppOpenManager
-import com.vapp.admoblibrary.utils.SweetAlert.SweetAlertDialog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -560,6 +559,11 @@ object IronSourceUtil : LifecycleObserver {
                 if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                     dialog.dismiss()
                 }
+//                if (AppOpenManager.getInstance().isInitialized) {
+//                    if (!AppOpenManager.getInstance().isAppResumeEnabled) {
+//                        return
+//                    }
+//                }
                 IronSource.showInterstitial(placementId)
             }
 
@@ -596,6 +600,9 @@ object IronSourceUtil : LifecycleObserver {
             override fun onInterstitialAdShowSucceeded() {
                 if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                     dialog.dismiss()
+                }
+                if (AppOpenManager.getInstance().isInitialized) {
+                    AppOpenManager.getInstance().isAppResumeEnabled = false
                 }
                 callback.onInterstitialShowSucceed()
 
@@ -636,13 +643,15 @@ object IronSourceUtil : LifecycleObserver {
                 }
             }
         } else {
-            activity.lifecycleScope.launch(Dispatchers.Main) {
-                activity.lifecycle.addObserver(DialogHelperActivityLifeCycle(dialog))
-                if (!activity.isFinishing) {
-                    dialog.show()
+            if (dialogShowTime > 0) {
+                activity.lifecycleScope.launch(Dispatchers.Main) {
+                    activity.lifecycle.addObserver(DialogHelperActivityLifeCycle(dialog))
+                    if (!activity.isFinishing) {
+                        dialog.show()
+                    }
                 }
-
             }
+
         }
     }
 

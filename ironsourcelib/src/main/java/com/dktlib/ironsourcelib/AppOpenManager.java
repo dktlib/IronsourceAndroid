@@ -17,8 +17,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.appopen.AppOpenAd;
-import com.vapp.admoblibrary.R;
-import com.vapp.admoblibrary.ads.AdmodUtils;
 
 import java.util.ArrayList;
 import java.util.Date;

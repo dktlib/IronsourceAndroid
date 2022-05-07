@@ -12,8 +12,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         AdmodUtils.getInstance().initAdmob(this, 10000, true, true)
-            AppOpenManager.getInstance().init(application, getString(R.string.test_ads_admob_app_open))
-            AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
+        AppOpenManager.getInstance().init(application, getString(R.string.test_ads_admob_app_open))
+        AppOpenManager.getInstance().disableAppResumeWithActivity(SplashActivity::class.java)
 
         val binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
         IronSourceUtil.validateIntegration(this)
         this.application.registerActivityLifecycleCallbacks(IronSourceLifeCycleHelper)
 
-        IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this,"splash",1500,0,object : InterstititialCallback {
+        IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this, "splash", 0, 0, object : InterstititialCallback {
             override fun onInterstitialReady() {
 
             }
@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onInterstitialLoadFail() {
-                startActivity(Intent(this@SplashActivity,MainActivity::class.java))
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
 
             override fun onInterstitialShowSucceed() {
@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         binding.btnNext.setOnClickListener {
-            requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+          //  requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
         }
 //        IronSourceUtil.loadInterstitials(this,15000,object : InterstititialCallback {
 //            override fun onInterstitialReady() {
@@ -67,34 +67,35 @@ class SplashActivity : AppCompatActivity() {
 //        })
 
     }
-    val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted: Boolean ->
-            if (isGranted) {
-                IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this,"aplssh",1500,0,object : InterstititialCallback {
-                    override fun onInterstitialReady() {
 
-                    }
-
-                    override fun onInterstitialClosed() {
-                        onInterstitialLoadFail()
-                    }
-
-                    override fun onInterstitialLoadFail() {
-                        startActivity(Intent(this@SplashActivity,MainActivity::class.java))
-                    }
-
-                    override fun onInterstitialShowSucceed() {
-
-                    }
-                })
-            } else {
-                // Explain to the user that the feature is unavailable because the
-                // features requires a permission that the user has denied. At the
-                // same time, respect the user's decision. Don't link to system
-                // settings in an effort to convince the user to change their
-                // decision.
-            }
-        }
+//    val requestPermissionLauncher =
+//        registerForActivityResult(
+//            ActivityResultContracts.RequestPermission()
+//        ) { isGranted: Boolean ->
+//            if (isGranted) {
+//                IronSourceUtil.loadAndShowInterstitialsWithDialogCheckTime(this, "aplssh", 1500, 0, object : InterstititialCallback {
+//                    override fun onInterstitialReady() {
+//
+//                    }
+//
+//                    override fun onInterstitialClosed() {
+//                        onInterstitialLoadFail()
+//                    }
+//
+//                    override fun onInterstitialLoadFail() {
+//                        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//                    }
+//
+//                    override fun onInterstitialShowSucceed() {
+//
+//                    }
+//                })
+//            } else {
+//                // Explain to the user that the feature is unavailable because the
+//                // features requires a permission that the user has denied. At the
+//                // same time, respect the user's decision. Don't link to system
+//                // settings in an effort to convince the user to change their
+//                // decision.
+//            }
+//        }
 }

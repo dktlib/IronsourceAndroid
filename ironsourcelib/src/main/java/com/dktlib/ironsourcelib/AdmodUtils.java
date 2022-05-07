@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.dktlib.ironsourcelib.utils.SweetAlert.SweetAlertDialog;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdListener;
@@ -52,7 +53,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class AdmodUtils {

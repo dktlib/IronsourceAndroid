@@ -3,9 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.40260416666666665" />
         <entry key="../../../.gradle/caches/transforms-2/files-2.1/6576dcbd73148b6449a2910b5fa70a71/AdmobUtilsLibrary-5.0.9/res/layout/ad_unified_medium.xml" value="0.28229166666666666" />
+        <entry key="../../../.gradle/caches/transforms-2/files-2.1/fe0b20626cedd8a3741c37534f51485e/library-1.5.1/res/layout/alert_dialog.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.37604166666666666" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/bg_border_ads.xml" value="0.245" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/dialog_background.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/dialog_background_dark.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/error_center_x.xml" value="0.2025" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/gnt_outline_shape.xml" value="0.245" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/gnt_rounded_corners_shape.xml" value="0.245" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/gray_button_background.xml" value="0.2025" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/red_button_background.xml" value="0.2025" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/rounded_rectangle.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/success_bow.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/success_circle.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/warning_circle.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable-v24/warning_sigh.xml" value="0.244" />
+        <entry key="ironsourcelib/src/main/res/drawable/ic_launcher_background.xml" value="0.245" />
+        <entry key="ironsourcelib/src/main/res/layout/ad_unified_medium.xml" value="0.37604166666666666" />
+        <entry key="ironsourcelib/src/main/res/layout/ad_unified_small.xml" value="0.37604166666666666" />
+        <entry key="ironsourcelib/src/main/res/layout/alert_dialog.xml" value="0.37604166666666666" />
         <entry key="ironsourcelib/src/main/res/layout/banner_shimmer_layout.xml" value="0.28229166666666666" />
         <entry key="ironsourcelib/src/main/res/layout/data_placeholder_layout.xml" value="0.13697916666666668" />
         <entry key="ironsourcelib/src/main/res/layout/data_placeholder_layout_medium.xml" value="0.13177083333333334" />
