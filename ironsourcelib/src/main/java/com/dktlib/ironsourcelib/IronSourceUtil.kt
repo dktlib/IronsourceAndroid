@@ -554,10 +554,6 @@ object IronSourceUtil : LifecycleObserver {
             }
         }
 
-        //Throttle calling interstitial
-        if(System.currentTimeMillis() - 1000 < lastTimeCallInterstitial){
-            return
-        }
         lastTimeCallInterstitial = System.currentTimeMillis()
         if (!enableAds||!isNetworkConnected(activity)) {
             Log.e("isNetworkConnected", "1" + AppOpenManager.getInstance().isAppResumeEnabled)
