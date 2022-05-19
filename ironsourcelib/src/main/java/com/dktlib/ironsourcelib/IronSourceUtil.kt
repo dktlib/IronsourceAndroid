@@ -533,6 +533,8 @@ object IronSourceUtil : LifecycleObserver {
                 if((!IronSource.isInterstitialReady())&&(isInterstitialAdShowing)){
                     if (AppOpenManager.getInstance().isInitialized) {
                         AppOpenManager.getInstance().isAppResumeEnabled = true
+                        Log.e("isAppResumeEnabled", "1" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                     }
                     callback.onInterstitialLoadFail()
                     IronSource.setInterstitialListener(emptyListener)
@@ -546,6 +548,8 @@ object IronSourceUtil : LifecycleObserver {
             } else {
                 if (AppOpenManager.getInstance().isInitialized) {
                     AppOpenManager.getInstance().isAppResumeEnabled = false
+                    Log.e("isAppResumeEnabled", "2" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                 }
             }
         }
@@ -561,6 +565,8 @@ object IronSourceUtil : LifecycleObserver {
             }
             if (AppOpenManager.getInstance().isInitialized) {
                 AppOpenManager.getInstance().isAppResumeEnabled = true
+                Log.e("isAppResumeEnabled", "3" + AppOpenManager.getInstance().isAppResumeEnabled)
+
             }
             isInterstitialAdShowing = false
             callback.onInterstitialLoadFail()
@@ -589,6 +595,8 @@ object IronSourceUtil : LifecycleObserver {
                     isLoadInterstitialFailed = true
                     if (AppOpenManager.getInstance().isInitialized) {
                         AppOpenManager.getInstance().isAppResumeEnabled = true
+                        Log.e("isAppResumeEnabled", "4" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                     }
                     isInterstitialAdShowing = false
                     callback.onInterstitialLoadFail()
@@ -606,6 +614,8 @@ object IronSourceUtil : LifecycleObserver {
                 }
                 if (AppOpenManager.getInstance().isInitialized) {
                     AppOpenManager.getInstance().isAppResumeEnabled = true
+                    Log.e("isAppResumeEnabled", "5" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                 }
                 isInterstitialAdShowing = false
 
@@ -621,6 +631,8 @@ object IronSourceUtil : LifecycleObserver {
                 }
                 if (AppOpenManager.getInstance().isInitialized) {
                     AppOpenManager.getInstance().isAppResumeEnabled = false
+                    Log.e("isAppResumeEnabled", "6" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                 }
                 callback.onInterstitialShowSucceed()
 
@@ -631,6 +643,8 @@ object IronSourceUtil : LifecycleObserver {
             override fun onInterstitialAdShowFailed(p0: IronSourceError?) {
                 if (AppOpenManager.getInstance().isInitialized) {
                     AppOpenManager.getInstance().isAppResumeEnabled = true
+                    Log.e("isAppResumeEnabled", "7" + AppOpenManager.getInstance().isAppResumeEnabled)
+
                 }
                 isInterstitialAdShowing = false
                 callback.onInterstitialClosed()

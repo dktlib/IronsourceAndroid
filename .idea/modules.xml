@@ -4,7 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/IronSourceUtils.iml" filepath="$PROJECT_DIR$/.idea/modules/IronSourceUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/IronSourceUtils.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.iml" filepath="$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/ironsourcelib/IronSourceUtils.ironsourcelib.unitTest.iml" />
     </modules>
   </component>
 </project>

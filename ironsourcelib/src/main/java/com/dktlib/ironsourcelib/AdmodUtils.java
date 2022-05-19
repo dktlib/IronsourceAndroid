@@ -276,7 +276,7 @@ public class AdmodUtils {
                         shimmerFrameLayout.stopShimmerAnimation();
                         viewGroup.removeAllViews();
                         viewGroup.addView(adView);
-                        viewGroup.setVisibility(View.VISIBLE);
+                      //  viewGroup.setVisibility(View.VISIBLE);
                     }
 
                 })
