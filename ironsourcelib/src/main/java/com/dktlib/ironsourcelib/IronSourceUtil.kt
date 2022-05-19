@@ -560,15 +560,23 @@ object IronSourceUtil : LifecycleObserver {
         }
         lastTimeCallInterstitial = System.currentTimeMillis()
         if (!enableAds||!isNetworkConnected(activity)) {
+            Log.e("isNetworkConnected", "1" + AppOpenManager.getInstance().isAppResumeEnabled)
             if (activity.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED) && dialog.isShowing()) {
                 dialog.dismiss()
             }
+            Log.e("isNetworkConnected", "2" + AppOpenManager.getInstance().isAppResumeEnabled)
+
             if (AppOpenManager.getInstance().isInitialized) {
                 AppOpenManager.getInstance().isAppResumeEnabled = true
-                Log.e("isAppResumeEnabled", "3" + AppOpenManager.getInstance().isAppResumeEnabled)
+                Log.e("isNetworkConnected", "3" + AppOpenManager.getInstance().isAppResumeEnabled)
 
+                Log.e("isAppResumeEnabled", "3" + AppOpenManager.getInstance().isAppResumeEnabled)
             }
+            Log.e("isNetworkConnected", "4" + AppOpenManager.getInstance().isAppResumeEnabled)
+
             isInterstitialAdShowing = false
+            Log.e("isNetworkConnected", "5" + AppOpenManager.getInstance().isAppResumeEnabled)
+
             callback.onInterstitialLoadFail()
             IronSource.setInterstitialListener(emptyListener)
             return
@@ -868,6 +876,9 @@ object IronSourceUtil : LifecycleObserver {
 
     fun isNetworkConnected(context: Context): Boolean {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
+
+        var vau = cm.activeNetworkInfo != null && cm.activeNetworkInfo!!.isConnected
+        Log.e("isNetworkConnected", "0" + vau)
+        return vau
     }
 }
