@@ -524,22 +524,21 @@ object IronSourceUtil : LifecycleObserver {
 
         if(!IronSource.isInterstitialReady()){
             IronSource.loadInterstitial()
-            activity.lifecycleScope.launch(Dispatchers.Main) {
-                var timeout2 = timeout.toInt();
-                if (timeout2 <= 0) {
-                    timeout2 = 30000
-                }
-                delay(timeout2.toLong())
-                if((!IronSource.isInterstitialReady())&&(isInterstitialAdShowing)){
-                    if (AppOpenManager.getInstance().isInitialized) {
-                        AppOpenManager.getInstance().isAppResumeEnabled = true
-                        Log.e("isAppResumeEnabled", "1" + AppOpenManager.getInstance().isAppResumeEnabled)
-
-                    }
-                    callback.onInterstitialLoadFail()
-                    IronSource.setInterstitialListener(emptyListener)
-                }
-            }
+//            activity.lifecycleScope.launch(Dispatchers.Main) {
+//                var timeout2 = timeout.toInt();
+//                if (timeout2 <= 0) {
+//                    timeout2 = 30000
+//                }
+//                delay(timeout2.toLong())
+//                if((!IronSource.isInterstitialReady())&&(isInterstitialAdShowing)){
+//                    if (AppOpenManager.getInstance().isInitialized) {
+//                        AppOpenManager.getInstance().isAppResumeEnabled = true
+//                        Log.e("isAppResumeEnabled", "1" + AppOpenManager.getInstance().isAppResumeEnabled)
+//                    }
+//                    callback.onInterstitialLoadFail()
+//                    IronSource.setInterstitialListener(emptyListener)
+//                }
+//            }
         }
 
         if (AppOpenManager.getInstance().isInitialized) {
