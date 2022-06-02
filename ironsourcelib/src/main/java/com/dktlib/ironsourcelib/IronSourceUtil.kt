@@ -145,7 +145,7 @@ object IronSourceUtil : LifecycleObserver {
             }
 
             override fun onInterstitialAdLoadFailed(p0: IronSourceError?) {
-                callback.onInterstitialLoadFail()
+                callback.onInterstitialLoadFail(p0?.errorMessage.toString())
                 isLoadInterstitialFailed = true
             }
 
@@ -194,7 +194,7 @@ object IronSourceUtil : LifecycleObserver {
                 var a = p0!!.errorMessage
                 var b = p0!!.errorCode
                 var c = 0
-                callback.onInterstitialLoadFail()
+                callback.onInterstitialLoadFail(p0?.errorMessage.toString())
                 isLoadInterstitialFailed = true
                 isInterstitialAdShowing = false
             }
@@ -229,7 +229,7 @@ object IronSourceUtil : LifecycleObserver {
             activity.lifecycleScope.launch(Dispatchers.Main) {
                 delay(timeout)
                 if((!IronSource.isInterstitialReady())&&(!isInterstitialAdShowing)){
-                    callback.onInterstitialLoadFail()
+                    callback.onInterstitialLoadFail("!IronSource.isInterstitialReady()")
                 }
             }
         }
@@ -410,14 +410,14 @@ object IronSourceUtil : LifecycleObserver {
             if (AppOpenManager.getInstance().isInitialized) {
                 AppOpenManager.getInstance().isAppResumeEnabled = true
             }
-            callback.onInterstitialLoadFail()
+            callback.onInterstitialLoadFail("\"isNetworkConnected\"")
             return
         }
         if (!(System.currentTimeMillis() - timeInMillis > lastTimeInterstitialShowed) || (!enableAds)) {
             if (AppOpenManager.getInstance().isInitialized) {
                 AppOpenManager.getInstance().isAppResumeEnabled = true
             }
-            callback.onInterstitialLoadFail()
+            callback.onInterstitialLoadFail("\"isNetworkConnected\"")
             return
         }
         IronSource.setInterstitialListener(object : InterstitialListener {
@@ -436,7 +436,7 @@ object IronSourceUtil : LifecycleObserver {
                     if (AppOpenManager.getInstance().isInitialized) {
                         AppOpenManager.getInstance().isAppResumeEnabled = true
                     }
-                    callback.onInterstitialLoadFail()
+                    callback.onInterstitialLoadFail(p0?.errorMessage.toString())
                     IronSource.setInterstitialListener(emptyListener)
                 }
             }
@@ -572,7 +572,7 @@ object IronSourceUtil : LifecycleObserver {
             isInterstitialAdShowing = false
             Log.e("isNetworkConnected", "5" + AppOpenManager.getInstance().isAppResumeEnabled)
 
-            callback.onInterstitialLoadFail()
+            callback.onInterstitialLoadFail("isNetworkConnected")
             IronSource.setInterstitialListener(emptyListener)
             return
         }
@@ -602,7 +602,7 @@ object IronSourceUtil : LifecycleObserver {
 
                     }
                     isInterstitialAdShowing = false
-                    callback.onInterstitialLoadFail()
+                    callback.onInterstitialLoadFail(p0?.errorMessage.toString())
                     IronSource.setInterstitialListener(emptyListener)
                 }
             }
