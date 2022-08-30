@@ -25,7 +25,7 @@ class MainActivity2 : AppCompatActivity() {
 
                     }
 
-                    override fun onInterstitialLoadFail() {
+                    override fun onInterstitialLoadFail(error: String) {
                         startActivity(Intent(this@MainActivity2, MainActivity3::class.java))
 
 

@@ -85,10 +85,10 @@ class BlankFragment : Fragment() {
                     }
 
                     override fun onInterstitialClosed() {
-                        onInterstitialLoadFail()
+                        onInterstitialLoadFail("1")
                     }
 
-                    override fun onInterstitialLoadFail() {
+                    override fun onInterstitialLoadFail(error: String) {
                         startActivity(Intent(requireActivity(),SplashActivity::class.java))
                     }
 

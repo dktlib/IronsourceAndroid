@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this@MainActivity, MainActivity3::class.java))
                     }
 
-                    override fun onInterstitialLoadFail() {
+                    override fun onInterstitialLoadFail(error: String) {
                         onInterstitialClosed()
                     }
                 })
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                override fun onInterstitialLoadFail() {
+                override fun onInterstitialLoadFail(error: String) {
                     startActivity(Intent(this@MainActivity, MainActivity2::class.java))
 
 

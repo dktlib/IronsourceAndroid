@@ -27,10 +27,10 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onInterstitialClosed() {
-                onInterstitialLoadFail()
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
 
-            override fun onInterstitialLoadFail() {
+            override fun onInterstitialLoadFail(error: String) {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
 
